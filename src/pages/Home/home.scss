@@ -1,0 +1,78 @@
+.home {
+  height: 100vh; // 设置高度为视口高度
+  width: 100vw; // 设置宽度为视口宽度
+  display: flex; // 设置为弹性布局
+
+  .sider {
+    background-color: #fafbff;
+    width: 260px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .sider-top {
+      display: flex;
+      height: 80px;
+      align-items: center;
+
+      .logo {
+        font-size: 26px;
+        font-family: Comic Sans MS, Comic Sans, cursive;
+        margin-left: 25px;
+        margin-right: 45px;
+      }
+
+      .collapsed-button {
+        font-size: 20px;
+        color: #8b8b8b;
+        margin-left: 15px;
+        border: none;
+
+        &:hover {
+          background-color: #d9e6ff;
+        }
+      }
+    }
+
+    .new-button {
+      width: 130px;
+      margin-left: 28px;
+      margin-bottom: 20px;
+      font-size: 16px; // 字体变大
+      font-weight: bold; // 字体加粗
+      background-color: rgb(219 234 254); // 默认未激活颜色
+      color: #4D6BFE; // 文字颜色
+
+      &:hover {
+        background-color: #c6dcf8; // 激活时的颜色
+        color: #4D6BFE; // 文字颜色
+      }
+    }
+
+    .sider-menu {
+      background-color: #fafbff;
+      flex: 1;
+      border: 0;
+    }
+
+    .sider-bottom {
+      display: flex;
+      margin: 15px;
+      height: 50px;
+      border: 0;
+      border-radius: 10px;
+      background-color: #fafbff;
+      font-size: 14px;
+      align-items: center;
+      padding-left: 10px;
+      &:hover {
+        background-color: #eff2fe; // 激活时的颜色
+      }
+    }
+  }
+
+  .sider.collapsed {
+    width: 80px;
+    /* 侧边栏被折叠时的宽度 */
+  }
+}
