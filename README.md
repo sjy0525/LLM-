@@ -1,5 +1,5 @@
 # 字节跳动青训营-LLM 对话框组件
-技术栈：React + TypeScript + Vite + Ant Design + Zustand + axios
+技术栈：React + TypeScript + Vite + Ant Design + Zustand
 
 ### 操作说明
 1. 配置环境 `npm install`

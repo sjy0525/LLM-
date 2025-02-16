@@ -35,4 +35,71 @@
       }
     }
   }
+
+  .uploadedFiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .uploadedFile {
+      position: relative;
+      width: 180px;
+      height: 40px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 5px 10px;
+      margin-bottom: 5px;
+
+      &:hover .deleteButton {
+        display: block;
+      }
+      
+      &:hover {
+        box-shadow: 2px 4px 4px rgba(144, 150, 174, .25);
+        border: 1px solid #d9d9d9;
+      }
+
+      .fileIcon {
+        font-size: 24px;
+        margin-right: 10px;
+      }
+
+      .fileDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+
+        .fileName {
+          font-size: 14px;
+          font-weight: bold;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .fileStatus {
+          font-size: 10px;
+          color: #888;
+        }
+      }
+
+      .deleteButton {
+        display: none;
+        position: absolute;
+        top: -9px;
+        right: -9px;
+        border: none;
+        color: #b58b8c;
+        background-color: #fff;
+        &:hover {
+          background-color: #ff4d4f;
+          color: #fff;
+        }
+      }
+    }
+  }
 }

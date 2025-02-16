@@ -1,19 +1,34 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
-// 定义 store 的状态类型
+// 定义 UserState 类型
 type UserState = {
-  username: string;    // 账号
-  cozeToken: string; // token
-  setUsername: (username: string) => void; // 更新账号的函数
-  setCozeToken: (cozeToken: string) => void; // 更新 token 的函数
+  userName: string;
+  cozeToken: string;
+  botId: string;
+  setUserName: (userName: string) => void;
+  setCozeToken: (cozeToken: string) => void;
+  setBotId: (botId: string) => void;
+  getState: () => UserState;
 };
 
-// 使用 create 创建 store
-const useUserStore = create<UserState>((set) => ({
-  username: '', // 初始化为空
-  cozeToken: '', // 初始化为空
-  setUsername: (username) => set({ username }), // 更新 username
-  setCozeToken: (cozeToken) => set({ cozeToken: cozeToken }), // 更新 token
-}));
+// 创建 zustand store
+const useUserStore = create<UserState>()(
+  persist(
+    (set, get) => ({
+      userName: '', // 默认值
+      cozeToken: '', // 默认值
+      botId: '', // 默认值
+      setUserName: (userName) => set({ userName }),
+      setCozeToken: (cozeToken) => set({ cozeToken }),
+      setBotId: (botId) => set({ botId }),
+      getState: () => get(), // 添加 getState 方法
+    }),
+    {
+      name: 'user-storage', // 存储的 key 名称
+      storage: createJSONStorage(() => localStorage), // 使用 localStorage
+    }
+  )
+);
 
-export {useUserStore};
+export { useUserStore };
