@@ -16,9 +16,9 @@ type UserState = {
 const useUserStore = create<UserState>()(
   persist(
     (set, get) => ({
-      userName: '', // 默认值
-      cozeToken: '', // 默认值
-      botId: '', // 默认值
+      userName: '7470784730083409955', // 默认值
+      cozeToken: 'pat_h37Qf1kFZc0W2e0WcJ4zxYraa8JD6LVwyhOGdVorQo1YD9Qynt84JchqF3bqWDLd', // 默认值
+      botId: '7471962319518793791', // 默认值
       setUserName: (userName) => set({ userName }),
       setCozeToken: (cozeToken) => set({ cozeToken }),
       setBotId: (botId) => set({ botId }),

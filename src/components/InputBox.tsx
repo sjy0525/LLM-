@@ -9,9 +9,10 @@ import {
   CloseOutlined
 } from '@ant-design/icons';
 import './inputBox.scss';
-import { uploadFileAPI, chatAPI } from "../apis";
+import { uploadFileAPI } from "../apis";
 import { v4 as uuidv4 } from 'uuid';
 import { useUserStore } from '../store';
+import useCozeChat from '../hooks/useCozeChat';
 
 const { TextArea } = Input;
 
@@ -33,7 +34,9 @@ const InputBox = ({ conversationId = '' }) => {
 
   const [message, setMessage] = useState('');
   const [files, setFiles] = useState<UploadedFile[]>([]);
-  const { userName, cozeToken, botId } = useUserStore();
+  const { botId } = useUserStore();
+  const { sendMessage } = useCozeChat();
+  const [isSending, setIsSending] = useState(false); // 新增发送中状态
 
   const handleAddFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -104,16 +107,22 @@ const InputBox = ({ conversationId = '' }) => {
     return null;
   };
 
-  const handleSend = () => {
-    if (!userName || !cozeToken || !botId) {
-      antdMessage.error('请确保用户名、Token和Bot ID均已设置');
+  const handleSend = async () => {
+    if (!botId) {
+      antdMessage.error('请确保 Bot ID 已设置');
       return;
     }
-    const response = chatAPI({ conversationId, message, files });
-    console.log(response);
-    setMessage('');
-    setFiles([]);
-    // 处理发送消息后的逻辑
+    if (message.trim() === '') return;
+
+    setIsSending(true); // 开始发送，设置为 loading 状态
+    try {
+      await sendMessage(message, botId);
+    } catch (error) {
+      antdMessage.error('消息发送失败，请稍后重试。');
+    } finally {
+      setIsSending(false); // 发送完成，取消 loading 状态
+      setMessage(''); // 清空输入框
+    }
   };
 
   return (
@@ -179,6 +188,7 @@ const InputBox = ({ conversationId = '' }) => {
             shape="circle"
             icon={<ArrowUpOutlined />}
             onClick={handleSend}
+            loading={isSending} // 设置 loading 状态
           ></Button>
         </div>
       </div>

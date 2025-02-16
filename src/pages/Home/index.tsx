@@ -12,6 +12,8 @@ import { Avatar, Button, Dropdown, Input, Menu, MenuProps, message, Modal } from
 import './home.scss';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../store';
+import InputBox from '../compons/InputBox';
+import useCozeChat from '../../hooks/useCozeChat';
 
 const Home: React.FC = () => {
 
@@ -26,20 +28,16 @@ const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cozeToken, setCozeToken, botId, setBotId, userName, setUserName } = useUserStore();
   const navigate = useNavigate();
+  const { messages, loading, error } = useCozeChat();
 
-<<<<<<< HEAD
-  const menuItems: MenuProps['items'] = [
-    { key: 'account', label: username, disabled: true, },
-=======
   const menuItems = chatItems.map(item => ({
     key: item.id,
     label: item.title,
     onClick: () => changeKey(item.id),
   }));
-  
+
   const dropdownItems: MenuProps['items'] = [
-    { key: 'account',label: userName, disabled: true,},
->>>>>>> 8589d9a8ba59557d509bd59ff5b7ab74f07fa6d7
+    { key: 'account', label: userName, disabled: true, },
     { key: 'setup', label: '系统设置', icon: <SettingOutlined /> },
     { key: 'quit', label: '退出登录', icon: <LogoutOutlined /> },
   ];
@@ -61,7 +59,6 @@ const Home: React.FC = () => {
     if (key === 'setup') {
       setIsModalOpen(true);
     } else if (key === 'quit') {
-      // logout
       message.info(`Click on item ${key}`);
     }
   };
@@ -89,6 +86,22 @@ const Home: React.FC = () => {
             {!collapsed && <span>&nbsp;&nbsp;个人信息</span>}
           </a>
         </Dropdown>
+      </div>
+      <div className="chat-container">
+        <div className="chat-messages">
+          {messages.map((message, index) => (
+            <div key={index}>
+              <span>{message.role}: </span>
+              <span>{message.content}</span>
+            </div>
+          ))}
+        </div>
+        {/* 显示加载状态 */}
+        {loading && <div className="loading">正在加载...</div>}
+        {/* 显示错误信息 */}
+        {error && <div className="error">{error}</div>}
+        {/* 输入框组件 */}
+        {/* <InputBox conversationId={activeKey} /> */}
       </div>
       <Outlet />
       <Modal className='setup' title="系统设置" open={isModalOpen} onCancel={() => setIsModalOpen(false)} footer={null} centered>

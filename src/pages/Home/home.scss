@@ -65,6 +65,7 @@
       font-size: 14px;
       align-items: center;
       padding-left: 10px;
+
       &:hover {
         background-color: #eff2fe; // 激活时的颜色
       }
@@ -81,7 +82,7 @@
 .setup {
   display: flex;
   flex-direction: column;
-  
+
   span {
     font-weight: bold;
   }
