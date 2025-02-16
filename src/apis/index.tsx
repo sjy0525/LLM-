@@ -117,7 +117,7 @@ export async function chatAPI({ conversationId, message, files }: chatAPIParams)
       let decodeValue = decoder.decode(value, { stream: true });
       buffer += decodeValue;
       // 可以打印 decodeValue 查看流数据
-      console.log(decodeValue);
+      // console.log(decodeValue);
       try {
         const parsedData = parseEventStream(decodeValue);
 
