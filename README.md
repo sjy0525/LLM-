@@ -1,7 +1,9 @@
 # 字节跳动青训营-LLM 对话框组件
 技术栈：React + TypeScript + Vite + Ant Design + Zustand
 
-启动项目 `npm run dev` 
+### 操作说明
+1. 配置环境 `npm install`
+2. 启动项目 `npm run dev` 
 
 ### 项目框架说明
 
