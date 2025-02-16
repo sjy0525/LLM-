@@ -28,7 +28,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const menuItems: MenuProps['items'] = [
-    { key: 'account',label: username, disabled: true,},
+    { key: 'account', label: username, disabled: true, },
     { key: 'setup', label: '系统设置', icon: <SettingOutlined /> },
     { key: 'quit', label: '退出登录', icon: <LogoutOutlined /> },
   ];
