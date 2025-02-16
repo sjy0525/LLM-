@@ -1,5 +1,5 @@
 # 字节跳动青训营-LLM 对话框组件
-技术栈：React + TypeScript + Vite + Ant Design + Zustand + axios
+技术栈：React + TypeScript + Vite + Ant Design + Zustand
 
 启动项目 `npm run dev` 
 
