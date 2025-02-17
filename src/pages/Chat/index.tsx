@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom"
 
 const Chat = () => {
-  const { id } = useParams<{ id: string }>();
-  
-  return <div>Chat ID: {id}</div>;
+  const { id } = useParams<{ id: string }>()
+
+  return <div>Chat ID: {id}</div>
 }
-  
-export default Chat;
+
+export default Chat
