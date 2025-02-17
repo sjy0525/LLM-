@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint&&npx eslint . --fix
 
       - name: Run Tests
         run: npm test
