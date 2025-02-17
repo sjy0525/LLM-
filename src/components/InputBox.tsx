@@ -8,7 +8,7 @@ import {
   FileTextTwoTone,
   CloseOutlined,
 } from "@ant-design/icons"
-import "./inputBox.scss"
+import "./inputbox.scss"
 import { uploadFileAPI, chatAPI } from "../apis"
 import { v4 as uuidv4 } from "uuid"
 import { useUserStore } from "../store"
