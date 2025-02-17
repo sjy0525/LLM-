@@ -17,7 +17,10 @@
 
       .logo {
         font-size: 26px;
-        font-family: Comic Sans MS, Comic Sans, cursive;
+        font-family:
+          Comic Sans MS,
+          Comic Sans,
+          cursive;
         margin-left: 25px;
         margin-right: 45px;
       }
@@ -41,11 +44,11 @@
       font-size: 16px; // 字体变大
       font-weight: bold; // 字体加粗
       background-color: rgb(219 234 254); // 默认未激活颜色
-      color: #4D6BFE; // 文字颜色
+      color: #4d6bfe; // 文字颜色
 
       &:hover {
         background-color: #c6dcf8; // 激活时的颜色
-        color: #4D6BFE; // 文字颜色
+        color: #4d6bfe; // 文字颜色
       }
     }
 
@@ -75,13 +78,12 @@
     width: 80px;
     /* 侧边栏被折叠时的宽度 */
   }
-
 }
 
 .setup {
   display: flex;
   flex-direction: column;
-  
+
   span {
     font-weight: bold;
   }
