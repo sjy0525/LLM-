@@ -16,10 +16,10 @@ const router = createBrowserRouter([
         element: <ChatWelcome></ChatWelcome>
       },
       {
-        path: '/chat/:id',
-        element: <Chat></Chat>
-      }
-    ]
+        path: "/chat/:id",
+        element: <Chat></Chat>,
+      },
+    ],
   },
   {
     path: '/login',
