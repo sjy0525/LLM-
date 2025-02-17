@@ -21,7 +21,7 @@ import {
 import "./home.scss"
 import { Outlet, useNavigate } from "react-router-dom"
 import { useUserStore } from "../../store"
-
+import useCozeChat from "../../hooks/useCozeChat"
 const Home: React.FC = () => {
   const chatItems = [
     { id: "1", title: "对话 1" },

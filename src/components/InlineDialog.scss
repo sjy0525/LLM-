@@ -1,0 +1,44 @@
+.InlineInput {
+    display: flex;
+    align-items: center; // 垂直居中对齐
+    width: 100%;
+    margin-bottom: 10px; // 调整底部间距
+    padding: 6px; // 增加 padding 让输入框不会完全融入
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f3f4f6; // 背景色
+
+    .InputField {
+        flex-grow: 1; // 让输入框占据剩余空间
+        background-color: #f3f4f6; // 背景色
+        border: none; // 去掉边框
+        outline: none; // 移除点击后的边框
+        box-shadow: none; // 移除阴影
+        padding: 6px 10px; // 调整 padding 让输入框更紧凑
+        border-radius: 8px; // 让输入框边角更柔和
+
+        &:focus {
+            background-color: #f3f4f6; // 确保焦点时背景色不变
+            box-shadow: none; // 去掉焦点时的阴影
+            border-color: transparent; // 去掉焦点时的边框
+        }
+
+        &:hover {
+            background-color: #f3f4f6; // 鼠标悬停时背景色不变
+        }
+    }
+
+    .Paperbutton {
+        margin-left: 10px; // 增加左右间距
+        border: none;
+        color: #000;
+
+        &:hover {
+            background-color: #d9e6ff;
+        }
+    }
+
+    button {
+        margin-left: 10px; // 为发送按钮添加间距
+    }
+}
