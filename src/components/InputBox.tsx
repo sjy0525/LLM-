@@ -13,6 +13,8 @@ import { uploadFileAPI } from "../apis";
 import { v4 as uuidv4 } from 'uuid';
 import { useUserStore } from '../store';
 import useCozeChat from '../hooks/useCozeChat';
+import "./inputbox.scss"
+
 
 const { TextArea } = Input
 
