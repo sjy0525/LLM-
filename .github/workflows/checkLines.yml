@@ -20,7 +20,7 @@ jobs:
 
       - name: Check line count limit
         run: |
-          if[${{steps.count_lines.outputs.added_lines}} -dt 500];then
+          if[${{steps.count_lines.outputs.added_lines}} -gt 500];then
             echo "Error:The total number of added lines exceeds the limit of500 lines."
             exit 1
           else
