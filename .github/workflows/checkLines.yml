@@ -1,0 +1,28 @@
+name: Check Line Count
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check_line_count:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Count added lines
+        id: count_lines
+        run: |
+          ADDED_LINES=$(git diff --cached --stat | awk '{sum += $1} END {print sum}')
+          echo "::set-output name=added_lines::$ADDED_LINES"
+
+      - name: Check line count limit
+        run: |
+          if[${{steps.count_lines.outputs.added_lines}} -dt 500];then
+            echo "Error:The total number of added lines exceeds the limit of500 lines."
+            exit 1
+          else
+            echo "Line count check passed."
+          fi
