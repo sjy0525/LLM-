@@ -4,7 +4,7 @@ import useCozeChat from '../hooks/useCozeChat';
 
 const ChatComponent: React.FC = () => {
     const [inputMessage, setInputMessage] = useState('');
-    const { messages, loading, error, sendMessage } = useCozeChat();
+    const { messages, loading, error, sendMessage, conversationId } = useCozeChat();
 
     const handleSendMessage = () => {
         if (inputMessage.trim() === '') return;
@@ -20,6 +20,7 @@ const ChatComponent: React.FC = () => {
                     <div key={index}>
                         <span>{message.role}: </span>
                         <span>{message.content}</span>
+                        <span>conversationId:{conversationId}</span>
                     </div>
                 ))}
             </div>

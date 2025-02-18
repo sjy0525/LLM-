@@ -13,6 +13,7 @@ const useCozeChat = () => {
     const [messages, setMessages] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const [conversationId, setConversationId] = useState<string | null>(null); // 新增状态用于存储 conversation_id
 
     // 定义发送消息的函数
     const sendMessage = async (message: string, botId: string) => {
@@ -44,6 +45,9 @@ const useCozeChat = () => {
             let botMessage = '';
             for await (const part of stream) {
                 if (part.event === ChatEventType.CONVERSATION_MESSAGE_DELTA) {
+                    if (part.data.conversation_id) {  // 从 part.data 中获取 conversation_id
+                        setConversationId(part.data.conversation_id);
+                    }
                     botMessage += part.data.content;
                     // 更新消息列表中的机器人消息
                     setMessages(prevMessages => {
@@ -72,7 +76,7 @@ const useCozeChat = () => {
         }
     };
 
-    return { messages, loading, error, sendMessage };
+    return { messages, loading, error, sendMessage, conversationId };
 };
 
 export default useCozeChat;
