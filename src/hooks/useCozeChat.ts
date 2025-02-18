@@ -43,27 +43,26 @@ const useCozeChat = () => {
             });
 
             let botMessage = '';
+            // 先添加一个空的助手消息
+            setMessages(prevMessages => [
+                ...prevMessages,
+                {
+                    role: RoleType.Assistant,
+                    content: '',
+                    content_type: 'text'
+                }
+            ]);
+
             for await (const part of stream) {
                 if (part.event === ChatEventType.CONVERSATION_MESSAGE_DELTA) {
-                    if (part.data.conversation_id) {  // 从 part.data 中获取 conversation_id
+                    if (part.data.conversation_id) {
                         setConversationId(part.data.conversation_id);
                     }
                     botMessage += part.data.content;
-                    // 更新消息列表中的机器人消息
+                    // 更新最后一条消息的内容
                     setMessages(prevMessages => {
                         const newMessages = [...prevMessages];
-                        const lastMessageIndex = newMessages.findIndex(msg => msg.role === RoleType.Assistant);
-                        if (lastMessageIndex === -1) {
-                            // 如果还没有机器人消息，添加一条新的
-                            newMessages.push({
-                                role: RoleType.Assistant,
-                                content: botMessage,
-                                content_type: 'text'
-                            });
-                        } else {
-                            // 更新已有的机器人消息
-                            newMessages[lastMessageIndex].content = botMessage;
-                        }
+                        newMessages[newMessages.length - 1].content = botMessage;
                         return newMessages;
                     });
                 }
@@ -75,6 +74,7 @@ const useCozeChat = () => {
             setLoading(false);
         }
     };
+    console.log(messages)
 
     return { messages, loading, error, sendMessage, conversationId };
 };
