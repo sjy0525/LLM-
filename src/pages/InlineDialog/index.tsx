@@ -41,6 +41,7 @@ const InlineDialog: React.FC = () => {
                 centered // 让弹窗居中
                 maskClosable={true} // 点击遮罩层可关闭
                 width={600} // 设置宽度
+                style={{ maxHeight: '80vh', overflowY: 'auto' }} // 设置最大高度，且超出部分滚动
             >
                 <div style={{ textAlign: "center", padding: "20px" }}>
                     <InlineInput />

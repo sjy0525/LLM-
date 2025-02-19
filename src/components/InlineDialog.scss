@@ -1,44 +1,79 @@
-.InlineInput {
+.Inline {
     display: flex;
-    align-items: center; // 垂直居中对齐
-    width: 100%;
-    margin-bottom: 10px; // 调整底部间距
-    padding: 6px; // 增加 padding 让输入框不会完全融入
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: #f3f4f6; // 背景色
+    flex-direction: column; // 使输入框和消息列表垂直排列
+    align-items: flex-start; // 输入框和消息对齐
 
-    .InputField {
-        flex-grow: 1; // 让输入框占据剩余空间
+    .InlineInput {
+        display: flex;
+        align-items: center; // 垂直居中对齐
+        width: 100%;
+        margin-bottom: 10px; // 调整底部间距
+        padding: 6px; // 增加 padding 让输入框不会完全融入
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
         background-color: #f3f4f6; // 背景色
-        border: none; // 去掉边框
-        outline: none; // 移除点击后的边框
-        box-shadow: none; // 移除阴影
-        padding: 6px 10px; // 调整 padding 让输入框更紧凑
-        border-radius: 8px; // 让输入框边角更柔和
 
-        &:focus {
-            background-color: #f3f4f6; // 确保焦点时背景色不变
-            box-shadow: none; // 去掉焦点时的阴影
-            border-color: transparent; // 去掉焦点时的边框
+        .InputField {
+            flex-grow: 1; // 让输入框占据剩余空间
+            background-color: #f3f4f6; // 背景色
+            border: none; // 去掉边框
+            outline: none; // 移除点击后的边框
+            box-shadow: none; // 移除阴影
+            padding: 6px 10px; // 调整 padding 让输入框更紧凑
+            border-radius: 8px; // 让输入框边角更柔和
+
+            &:focus {
+                background-color: #f3f4f6; // 确保焦点时背景色不变
+                box-shadow: none; // 去掉焦点时的阴影
+                border-color: transparent; // 去掉焦点时的边框
+            }
+
+            &:hover {
+                background-color: #f3f4f6; // 鼠标悬停时背景色不变
+            }
         }
 
-        &:hover {
-            background-color: #f3f4f6; // 鼠标悬停时背景色不变
+        .Paperbutton {
+            margin-left: 10px; // 增加左右间距
+            border: none;
+            color: #000;
+
+            &:hover {
+                background-color: #d9e6ff;
+            }
+        }
+
+        button {
+            margin-left: 10px; // 为发送按钮添加间距
         }
     }
 
-    .Paperbutton {
-        margin-left: 10px; // 增加左右间距
-        border: none;
-        color: #000;
-
-        &:hover {
-            background-color: #d9e6ff;
-        }
+    .messages {
+        margin-top: 10px; // 消息列表与输入框间的间距
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; // 将消息靠右对齐
     }
 
-    button {
-        margin-left: 10px; // 为发送按钮添加间距
+    .message {
+        max-width: 80%;
+        word-wrap: break-word; // 防止长文本溢出
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+        text-align: left; // 保证文本靠左对齐，避免居中
+        white-space: normal; // 允许文本换行
+    }
+
+    .user-message {
+        background-color: #20c95b; // 青绿色
+        align-self: flex-end; // 右对齐
+        color: white;
+    }
+
+    .bot-message {
+        background-color: #f0f0f0; // 灰色
+        align-self: flex-start; // 左对齐
     }
 }
