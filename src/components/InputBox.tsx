@@ -18,7 +18,7 @@ import "./inputbox.scss"
 
 const { TextArea } = Input
 
-const InputBox = ({ conversationId = "" }) => {
+const InputBox = (/*{ conversationId = "" }*/) => {
   interface UploadedFile {
     id: string
     name: string
