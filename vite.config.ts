@@ -15,7 +15,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         charset: false,
-        additionalData: `@import "@/styles/global.scss";` // 导入全局 SCSS 文件
+        additionalData: `@use "@/styles/global.scss";` // 导入全局 SCSS 文件
       },
     },
     postcss: {
