@@ -193,7 +193,7 @@ const InputBox = (/*{ conversationId = "" }*/) => {
       </div>
       <TextArea
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
         placeholder="给LLM-Chat助手发送消息吧~"
         autoSize={{ minRows: 3, maxRows: 15 }}
         onPressEnter={handleSend}

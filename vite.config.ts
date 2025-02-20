@@ -1,7 +1,8 @@
-import { defineConfig } from "vite"
-import react from "@vitejs/plugin-react"
-import autoprefixer from "autoprefixer"
-import path from 'path'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import autoprefixer from "autoprefixer";
+import path from 'path';
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -14,11 +15,11 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         charset: false,
-        additionalData: `@import "@/**/**.scss";` 
+        additionalData: `@import "@/styles/global.scss";` // 导入全局 SCSS 文件
       },
     },
     postcss: {
       plugins: [autoprefixer()],
     },
   },
-})
+});

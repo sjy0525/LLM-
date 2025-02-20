@@ -16,6 +16,7 @@
     "@coze/api": "^1.0.20",
     "antd": "^5.23.4",
     "axios": "^1.7.9",
+    "node-sass-glob-importer": "^5.3.3",
     "prettier": "^3.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
