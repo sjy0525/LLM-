@@ -1,7 +1,4 @@
-@media (max-width: 600px) {
-    @import "./pages/InlineDialog/inlineDialog.scss";
-    @import "../pages/ChatWelcome/chatWelcome.scss";
-    @import "../pages/Home/home.scss";
-    @import "../components/InlineDialog.scss";
-    @import "../components/inputbox.scss";
-}
+@use "../pages/InlineDialog/inlineDialog" as *;
+@use "../pages/ChatWelcome/chatWelcome" as *;
+@use "../pages/Home/home" as *;
+@use "../components/InlineDialog" as *;
