@@ -2,27 +2,28 @@ name: Check Line Count
 
 on:
   pull_request:
-    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
   check_line_count:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Count added lines
-        id: count_lines
-        run: |
-          ADDED_LINES=$(git diff --cached --stat | awk '{sum += $1} END {print sum}')
-          echo "::set-output name=added_lines::$ADDED_LINES"
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-      - name: Check line count limit
-        run: |
-          if[${{steps.count_lines.outputs.added_lines}} -gt 500];then
-            echo "Error:The total number of added lines exceeds the limit of500 lines."
-            exit 1
-          else
-            echo "Line count check passed."
-          fi
+    - name: Install dependencies
+      run: |
+        npm install -g typescript
+        npm install @types/node
+
+    - name: Compile TypeScript
+      run: tsc checkLine.ts
+
+    - name: Run line count check
+      run: node checkLine.js
