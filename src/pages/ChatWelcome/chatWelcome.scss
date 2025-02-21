@@ -1,6 +1,6 @@
 .chat-container {
   position: relative;
-  width: 30vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 40%;
   height: 100%;
 }
 
@@ -42,4 +42,59 @@
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 20%;
+}
+
+.chat-messages-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; // 防止容器溢出
+  padding: 0 10px; // 添加左右内边距，确保内容不紧贴边缘
+  position: relative; // 为 sticky 定位提供上下文
+}
+
+.chat-messages {
+  flex: 8;
+  margin-top: 10px; // 消息列表与输入框间的间距
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; // 将消息靠右对齐
+  overflow-y: auto; // 允许垂直滚动
+  overflow-x: hidden;
+  /* 禁止水平滚动条 */
+  padding-bottom: 60px; // 留出输入框的空间
+}
+
+/* 隐藏滚动条（只对Webkit浏览器有效） */
+.chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.message {
+  max-width: 80%;
+  word-wrap: break-word; // 防止长文本溢出
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  text-align: left; // 保证文本靠左对齐，避免居中
+  white-space: normal; // 允许文本换行
+}
+
+.message.user {
+  background-color: #20c95b; // 青绿色
+  align-self: flex-end; // 右对齐
+  color: white;
+}
+
+.message.assistant {
+  background-color: #f0f0f0; // 灰色
+  align-self: flex-start; // 左对齐
+}
+
+.inputBoxDown {
+  flex: 1;
+  /* 占4份 */
 }

@@ -34,7 +34,7 @@ const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cozeToken, setCozeToken, botId, setBotId, userName, setUserName } = useUserStore();
   const navigate = useNavigate();
-  const { messages, loading, error } = useCozeChat();
+  const { loading, error } = useCozeChat();
 
   const menuItems = chatItems.map((item) => ({
     key: item.id,
@@ -106,7 +106,7 @@ const Home: React.FC = () => {
           </a>
         </Dropdown>
       </div>
-      <div className="chat-container">
+      {/* <div className="chat-container">
         <div className="chat-messages">
           {messages.map((message, index) => (
             <div key={index}>
@@ -114,14 +114,14 @@ const Home: React.FC = () => {
               <span>{message.content}</span>
             </div>
           ))}
-        </div>
-        {/* 显示加载状态 */}
-        {loading && <div className="loading">正在加载...</div>}
-        {/* 显示错误信息 */}
-        {error && <div className="error">{error}</div>}
-        {/* 输入框组件 */}
-        {/* <InputBox conversationId={activeKey} /> */}
-      </div>
+        </div> */}
+      {/* 显示加载状态 */}
+      {loading && <div className="loading">正在加载...</div>}
+      {/* 显示错误信息 */}
+      {error && <div className="error">{error}</div>}
+      {/* 输入框组件 */}
+      {/* <InputBox conversationId={activeKey} /> */}
+      {/* </div> */}
       <Outlet />
       <Modal
         className="setup"

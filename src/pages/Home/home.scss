@@ -2,6 +2,7 @@
   height: 100vh; // 设置高度为视口高度
   width: 100vw; // 设置宽度为视口宽度
   display: flex; // 设置为弹性布局
+  overflow-x: hidden;
 
   .sider {
     background-color: #fafbff;

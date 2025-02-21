@@ -95,6 +95,120 @@
         border: none;
         color: #b58b8c;
         background-color: #fff;
+
+        &:hover {
+          background-color: #ff4d4f;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.inputBoxDown {
+  position: sticky; // 使用 sticky 定位
+  margin-bottom: 50px;
+  left: 50%; // 水平居中
+  // transform: translateX(0%); // 水平居中
+  width: 100%; // 设置宽度
+  max-width: 650px; // 最大宽度为650px
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  background-color: #f3f4f6;
+  z-index: 100; // 确保输入框在最上层
+  transition: transform 0.3s ease; // 如果需要平滑过渡效果
+
+  .inputBox-textarea {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important; // 确保不会有阴影边框
+    background-color: #f3f4f6;
+
+    &:focus {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .toolBar {
+    display: flex;
+    justify-content: space-between; // 左右对齐
+
+    .toolBar-right {
+      .button {
+        margin-right: 10px;
+        border: none;
+        color: #000;
+
+        &:hover {
+          background-color: #d9e6ff;
+        }
+      }
+    }
+  }
+
+  .uploadedFiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .uploadedFile {
+      position: relative;
+      width: 180px;
+      height: 40px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 5px 10px;
+      margin-bottom: 5px;
+
+      &:hover .deleteButton {
+        display: block;
+      }
+
+      &:hover {
+        box-shadow: 2px 4px 4px rgba(144, 150, 174, 0.25);
+        border: 1px solid #d9d9d9;
+      }
+
+      .fileIcon {
+        font-size: 24px;
+        margin-right: 10px;
+      }
+
+      .fileDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+
+        .fileName {
+          font-size: 14px;
+          font-weight: bold;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .fileStatus {
+          font-size: 10px;
+          color: #888;
+        }
+      }
+
+      .deleteButton {
+        display: none;
+        position: absolute;
+        top: -9px;
+        right: -9px;
+        border: none;
+        color: #b58b8c;
+        background-color: #fff;
+
         &:hover {
           background-color: #ff4d4f;
           color: #fff;

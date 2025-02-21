@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Input, message as antdMessage } from "antd"
 import {
   GlobalOutlined,
@@ -18,7 +18,11 @@ import "./inputbox.scss"
 
 const { TextArea } = Input
 
-const InputBox = (/*{ conversationId = "" }*/) => {
+interface InputProps {
+  onMessageReceived: (messages: any) => void
+}
+
+const InputBox: React.FC<InputProps> = ({ onMessageReceived }) => {
   interface UploadedFile {
     id: string
     name: string
@@ -59,12 +63,21 @@ const InputBox = (/*{ conversationId = "" }*/) => {
     .map((ext) => `.${ext.toLowerCase()}`)
     .join(",")
 
-  const [message, setMessage] = useState('');
+  //const [message, setMessage] = useState('');
+  const [inputText, setInputText] = useState(''); // 输入框内容
   const [files, setFiles] = useState<UploadedFile[]>([]);
+  //选择文件
   const { botId } = useUserStore();
-  const { sendMessage } = useCozeChat();
+  const { sendMessage, messages } = useCozeChat();
+  //调用接口
   const [isSending, setIsSending] = useState(false); // 新增发送中状态
-
+  const [flag, setFlag] = useState(false);
+  useEffect(() => {
+    if (messages.length > 0) {
+      onMessageReceived(messages)
+      setFlag(true);
+    }
+  }, [messages || flag]); // 每次 messages 更新时触发该 effect
   const handleAddFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (e.target.files) {
@@ -151,21 +164,26 @@ const InputBox = (/*{ conversationId = "" }*/) => {
       antdMessage.error('请确保 Bot ID 已设置');
       return;
     }
-    if (message.trim() === '') return;
-
+    if (inputText.trim() === '') {
+      antdMessage.warning('请输入消息');
+      return;
+    }
     setIsSending(true); // 开始发送，设置为 loading 状态
+
     try {
-      await sendMessage(message, botId);
+      setInputText(''); // 清空输入框
+      await sendMessage(inputText.trim(), botId,);
+      // onMessageReceived(messages)
+      // setFlag(true);
     } catch (error) {
       antdMessage.error('消息发送失败，请稍后重试。');
     } finally {
       setIsSending(false); // 发送完成，取消 loading 状态
-      setMessage(''); // 清空输入框
     }
   };
 
   return (
-    <div className="inputBox">
+    <div className={`${flag === true ? "inputBoxDown" : "inputBox"}`}>
       <div className="uploadedFiles">
         {files.map((file, index) => (
           <div key={index} className="uploadedFile">
@@ -192,8 +210,8 @@ const InputBox = (/*{ conversationId = "" }*/) => {
         ))}
       </div>
       <TextArea
-        value={message}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
         placeholder="给LLM-Chat助手发送消息吧~"
         autoSize={{ minRows: 3, maxRows: 15 }}
         onPressEnter={handleSend}
