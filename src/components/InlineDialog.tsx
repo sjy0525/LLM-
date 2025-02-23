@@ -74,7 +74,7 @@ const InlineInput = () => {
                     >
                         <ReactMarkdown
                             components={{
-                                code({ inline, className, children }: { inline?: boolean; className?: string; children: React.ReactNode }) {
+                                code({ inline, className, children }: { inline?: boolean; className?: string; children?: React.ReactNode }) {
                                     // 只有非内联且有语言标记的代码块才会被特殊处理
                                     const match = /language-(\w+)/.exec(className || '');
                                     const codeId = `code-${index}-${Math.random()}`;
