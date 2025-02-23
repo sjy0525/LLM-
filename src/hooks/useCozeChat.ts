@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { CozeAPI, COZE_CN_BASE_URL, ChatEventType, RoleType } from '@coze/api';
 
+import {useUserStore} from '../store/index'
+
 // 创建 Coze API 客户端实例
 const client = new CozeAPI({
-    token: 'pat_h37Qf1kFZc0W2e0WcJ4zxYraa8JD6LVwyhOGdVorQo1YD9Qynt84JchqF3bqWDLd', // 替换为你的实际 PAT 令牌
+    token: useUserStore.getState().cozeToken, // 从store中获取token
     baseURL: COZE_CN_BASE_URL,
     allowPersonalAccessTokenInBrowser: true
 });
