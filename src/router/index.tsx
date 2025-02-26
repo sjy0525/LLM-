@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import ChatWelcome from "../pages/ChatWelcome";
-import Chat from "../pages/Chat";
 import ChatComponent from "../components/ChatComponent";
 
 const router = createBrowserRouter([
@@ -14,10 +13,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ChatWelcome></ChatWelcome>
-      },
-      {
-        path: "/chat/:id",
-        element: <Chat></Chat>,
       },
     ],
   },

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CozeAPI, COZE_CN_BASE_URL, ChatEventType, RoleType } from '@coze/api';
 
-import {useUserStore} from '../store/index'
+import { useUserStore } from '../store/index'
 
 // 创建 Coze API 客户端实例
 const client = new CozeAPI({

@@ -13,7 +13,6 @@ import {
   Button,
   Dropdown,
   Input,
-  Menu,
   MenuProps,
   message,
   Modal,
@@ -23,24 +22,13 @@ import { Outlet, useNavigate } from "react-router-dom"
 import { useUserStore } from "../../store"
 import useCozeChat from "../../hooks/useCozeChat"
 const Home: React.FC = () => {
-  const chatItems = [
-    { id: "1", title: "对话 1" },
-    { id: "2", title: "对话 2" },
-    { id: "3", title: "对话 3" },
-  ]
 
   const [collapsed, setCollapsed] = useState(false);
-  const [activeKey, setActiveKey] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cozeToken, setCozeToken, botId, setBotId, userName, setUserName } = useUserStore();
   const navigate = useNavigate();
   const { loading, error } = useCozeChat();
 
-  const menuItems = chatItems.map((item) => ({
-    key: item.id,
-    label: item.title,
-    onClick: () => changeKey(item.id),
-  }));
 
   const dropdownItems: MenuProps['items'] = [
     { key: 'account', label: userName, disabled: true, },
@@ -52,14 +40,10 @@ const Home: React.FC = () => {
     setCollapsed(!collapsed)
   }
 
-  const changeKey = (key: string) => {
-    setActiveKey(key)
-    if (key) {
-      navigate(`/chat/${key}`)
-    } else {
-      navigate("/")
-    }
-  }
+  const changeKey = () => {
+    navigate("/"); // 导航到根路径
+    window.location.reload(); // 强制刷新页面
+  };
 
   const onClickMenu: MenuProps['onClick'] = ({ key }) => {
     if (key === 'setup') {
@@ -83,24 +67,17 @@ const Home: React.FC = () => {
             type="primary"
             size="large"
             className="new-button"
-            onClick={() => changeKey("")}
+            onClick={() => changeKey()}
           >
             <CommentOutlined />
             开启新对话
           </Button>
         )}
-        <Menu
-          className="sider-menu"
-          mode="inline"
-          inlineCollapsed={collapsed}
-          selectedKeys={[activeKey]}
-          items={menuItems}
-        />
         <Dropdown
           menu={{ items: dropdownItems, onClick: onClickMenu }}
           trigger={["click"]}
         >
-          <a onClick={(e) => e.preventDefault()} className="sider-bottom">
+          <a onClick={(e) => e.preventDefault()} className="sider-bottom fixed-bottom">
             <Avatar icon={<UserOutlined />} />
             {!collapsed && <span>&nbsp;&nbsp;个人信息</span>}
           </a>

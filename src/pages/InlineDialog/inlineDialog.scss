@@ -1,4 +1,12 @@
 .inline-dialog {
     border: none; // 去掉外层 div 的边框
     box-shadow: none; // 去掉阴影
+    width: 100%;
+    max-width: 100%;
+    padding-right: 10px;
+
+    @media(max-width:600px) {
+        width: 100%;
+        padding: 0 10px;
+    }
 }

@@ -27,7 +27,7 @@ const InlineDialog: React.FC = () => {
                             addonBefore={<SearchOutlined />}
                             onClick={handleOpenModal}
                             placeholder="搜索..."
-                            style={{ width: 500 }}
+                            style={{ width: '100%', maxWidth: '500px' }}
                         />
                     </Space.Compact>
                 </Space>

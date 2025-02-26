@@ -74,6 +74,13 @@
         background-color: #eff2fe; // 激活时的颜色
       }
     }
+
+    .fixed-bottom {
+      position: fixed; // 固定在屏幕
+      bottom: 20px; // 距离底部 20px
+      left: 20px; // 距离左侧 20px
+      z-index: 1000; // 确保在最上层
+    }
   }
 
   .sider.collapsed {
