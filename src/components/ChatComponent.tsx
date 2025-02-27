@@ -8,7 +8,7 @@ const ChatComponent: React.FC = () => {
 
     const handleSendMessage = () => {
         if (inputMessage.trim() === '') return;
-        sendMessage(inputMessage, '7471962319518793791'); // 替换为你的实际 bot ID
+        sendMessage(inputMessage, '7475704281941884968'); // 替换为你的实际 bot ID
         setInputMessage('');
     };
 
